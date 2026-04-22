@@ -17,6 +17,7 @@ class Game {
   }
 
   registerEvents() {
+    
     /*
       TODO:
       Написать обработчик события, который откликается
@@ -25,6 +26,22 @@ class Game {
       При неправильном вводе символа - this.fail();
       DOM-элемент текущего символа находится в свойстве this.currentSymbol.
      */
+
+document.addEventListener("keyup", (e) => {
+      let key = e.key
+      
+      if(key === this.currentSymbol.textContent) {
+        this.success()
+        return
+      }
+
+      if (key === 'Shift' || key === 'Alt' || key === 'Control') {
+        return;
+      }
+
+      this.fail();
+    });
+    
   }
 
   success() {

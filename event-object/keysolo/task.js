@@ -27,21 +27,16 @@ class Game {
       DOM-элемент текущего символа находится в свойстве this.currentSymbol.
      */
 
-document.addEventListener("keyup", (e) => {
-      let key = e.key
-      
-      if(key === this.currentSymbol.textContent) {
-        this.success()
-        return
-      }
+    document.addEventListener("keyup", (e) => {
+      let key = e.key.toLowerCase();  
+      let symbol = this.currentSymbol.textContent.toLowerCase();
 
-      if (key === 'Shift' || key === 'Alt' || key === 'Control') {
-        return;
-      }
-
-      this.fail();
+      if (key == symbol) {
+        this.success();
+      } else {
+        this.fail();
+      };
     });
-    
   }
 
   success() {
